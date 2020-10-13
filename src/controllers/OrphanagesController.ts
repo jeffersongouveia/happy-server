@@ -22,7 +22,14 @@ export default {
 
   async create(request: Request, response: Response) {
     const orphanageRepository = getRepository(Orphanage)
-    const orphanage = orphanageRepository.create(request.body)
+
+    const requestImages = request.files as Express.Multer.File[]
+    const orphanageData = {
+      ...request.body,
+      images: requestImages.map((file) => ({ path: file.filename }))
+    }
+
+    const orphanage = orphanageRepository.create(orphanageData)
     await orphanageRepository.save(orphanage)
 
     return response.status(201).json(orphanage)
