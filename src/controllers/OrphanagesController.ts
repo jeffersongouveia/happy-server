@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { getRepository } from 'typeorm'
+import * as Yup from 'yup'
 
 import Orphanage from '@models/Orphanage'
 import orphanagesView from '../views/orphanages_view'
@@ -33,6 +34,21 @@ export default {
       ...request.body,
       images: requestImages.map((file) => ({ path: file.filename })),
     }
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      latitude: Yup.number().required(),
+      longitude: Yup.number().required(),
+      about: Yup.string().max(300).required(),
+      instructions: Yup.string().required(),
+      opening_hours: Yup.string().required(),
+      open_on_weekends: Yup.boolean().required(),
+      images: Yup.array(
+        Yup.object().shape({
+          path: Yup.string().required(),
+        })),
+    })
+    await schema.validate(orphanageData, { abortEarly: false })
 
     const orphanage = orphanageRepository.create(orphanageData)
     await orphanageRepository.save(orphanage)
