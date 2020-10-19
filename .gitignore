@@ -118,5 +118,5 @@ dist
 .pnp.*
 
 .idea
-uploads
-*.sqlite
+uploads/*
+!uploads/.gitkeep
