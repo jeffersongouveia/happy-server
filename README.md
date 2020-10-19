@@ -22,7 +22,7 @@
 
 ## 💻 Project
 
-Happy is an app that connects people to institutional homes (orphanages) to make the day of many children happier 💜
+Happy is an app that connects people to institutional homes (orphanages) to make the day of many children happier 💜<br>
 The project is part of Next Level Week #03 (NLW), a bootcamp by [Rocketseat](https://rocketseat.com.br/).
 
 The other parts of the project are available in:
