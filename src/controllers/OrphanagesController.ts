@@ -32,6 +32,7 @@ export default {
     const requestImages = request.files as Express.Multer.File[]
     const orphanageData = {
       ...request.body,
+      open_on_weekends: request.body.open_on_weekends === 'true',
       images: requestImages.map((file) => ({ path: file.filename })),
     }
 
