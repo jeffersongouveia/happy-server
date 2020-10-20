@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
-import Image from '@models/Image'
+import Image from '../models/Image'
 
 @Entity('orphanages')
 class Orphanage {
